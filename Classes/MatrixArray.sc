@@ -27,6 +27,26 @@ MatrixArray {
 		);
 	}
 
+	*newIdentity { |size = 1|
+		^super.new.init(
+			size.collect{ |r|
+				Array.fill(size, { |c|
+					if (r == c) {1}{0};
+				})
+			}
+		);
+	}
+
+	*newUnitriangular { |size = 1|
+		^super.new.init(
+			size.collect{ |r|
+				Array.fill(size, { |c|
+					if (r <= c) {1}{0};
+				})
+			}
+		);
+	}
+
 	*fill { |rows, cols, func|
 		^super.new.init(
 			rows.collect{ |r|
